@@ -2,12 +2,8 @@
 
 require 'paper_trail'
 require "paper_trail_association_tracking/config"
-require "paper_trail_association_tracking/model_config"
-require "paper_trail_association_tracking/reifier"
-require "paper_trail_association_tracking/record_trail"
 require "paper_trail_association_tracking/request"
 require "paper_trail_association_tracking/paper_trail"
-require "paper_trail_association_tracking/version_concern"
 
 if defined?(Rails)
   require "paper_trail/frameworks/active_record"
@@ -33,27 +29,9 @@ module PaperTrail
     prepend ::PaperTrailAssociationTracking::Config
   end
 
-  class ModelConfig
-    prepend ::PaperTrailAssociationTracking::ModelConfig
-  end
-
-  class RecordTrail
-    prepend ::PaperTrailAssociationTracking::RecordTrail
-  end
-
-  module Reifier
-    class << self
-      prepend ::PaperTrailAssociationTracking::Reifier::ClassMethods
-    end
-  end
-
   module Request
     class << self
       prepend ::PaperTrailAssociationTracking::Request::ClassMethods
     end
-  end
-
-  module VersionConcern
-    include ::PaperTrailAssociationTracking::VersionConcern
   end
 end
