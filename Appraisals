@@ -8,34 +8,34 @@
 
 ### WHEN UPDATING THESE VERSIONS DONT FORGOT TO UPDATE .github/workflows/test.yml
 pt_versions = [
-  #'~>9.2', ### Likely not compatible with the new PT 12 loading mechanism
-  #'~>10.0', ### Likely not compatible with the new PT 12 loading mechanism
-  #'~>11.0', ### Likely not compatible with the new PT 12 loading mechanism
-  '~>12.0', 
+  # '~> 9.2', ### Likely not compatible with the new PT 12 loading mechanism
+  # '~> 10.0', ### Likely not compatible with the new PT 12 loading mechanism
+  # '~> 11.0', ### Likely not compatible with the new PT 12 loading mechanism
+  '~> 12.2',
 ]
 
 ar_versions = [
   [
-    '~>5.2', 
+    '~> 5.2',
     pt_versions,
   ],
   [
-    '~>6.0', 
+    '~> 6.0',
     pt_versions,
   ],
   [
-    '~>6.1', 
+    '~> 6.1',
     pt_versions,
   ],
   [
-    '~>7.0', 
+    '~> 7.0',
     pt_versions,
   ],
 ]
 
 ar_versions.each do |ar_ver, compatible_pt_versions|
   compatible_pt_versions.each do |pt_ver|
-    appraise "ar_#{ar_ver.sub('~>','')} pt_#{pt_ver.sub('~>','')}" do
+    appraise "ar_#{ar_ver.sub('~> ','')} pt_#{pt_ver.sub('~> ','')}" do
       gem "activerecord", ar_ver
 
       if pt_ver == 'master'
